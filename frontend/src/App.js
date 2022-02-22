@@ -2,15 +2,20 @@ import { useState } from 'react';
 import './App.css';
 import styled from 'styled-components';
 
+import * as React from 'react';
+
+import QuoteCard from './QuoteCard.js'
+
 const StyledButton = styled.button`
   background: transparent;
   border-radius: 3px;
   border: 2px solid palevioletred;
   color: palevioletred;
-  margin: 0 1em;
+  margin: auto;
   padding: 0.25em 1em;
   margin-top: 16px;
 `
+
 
 function App() {
   const [listOfQuotes] = useState(["one", "two", "three"])
@@ -22,13 +27,14 @@ function App() {
   return (
     <div className="App">
       <StyledButton onClick={buttonSetActiveQuote}>
-        Generate quote
+          Generate quote
       </StyledButton>
-      {activeQuote.map((arrayElement, i) => 
-        {
-          return <h1 key={i}>{arrayElement}</h1>    
-        }
-      )}
+      <QuoteCard quote={activeQuote.map((arrayElement, i) => 
+          {
+            return <h1 key={i}>{arrayElement}</h1>    
+          }
+        )}>
+      </QuoteCard>
     </div>
   );
 }
